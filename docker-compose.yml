@@ -1,0 +1,31 @@
+version: '3.1'
+
+
+services:
+  devDB:
+    image: postgres:15
+    container_name: devDB
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev123
+      - POSTGRES_DB=devDB
+    ports:
+      - '1000:5432'
+    volumes:
+      - devDB:/var/lib/postgresql/data
+
+  testDB:
+      image: postgres:15
+      container_name: testDB
+      environment:
+        - POSTGRES_USER=test
+        - POSTGRES_PASSWORD=test123
+        - POSTGRES_DB=testDB
+      ports:
+        - '1001:5432'
+      volumes:
+        - testDB:/var/lib/postgresql/data
+
+volumes:
+  devDB:
+  testDB:
